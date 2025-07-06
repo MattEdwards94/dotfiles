@@ -1,5 +1,4 @@
 --dotfiles
---adopt
 --ignore=.stowrc
 --ignore=README.md
 
