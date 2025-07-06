@@ -10,7 +10,7 @@ sudo apt install stow
 git clone git@github.com:MattEdwards94/dotfiles.git ~/dotfiles
 
 cd ~/dotfiles
-stow . --adopt --dotfiles
+stow .
 git reset --hard
 source ~/.bashrc
 ```
