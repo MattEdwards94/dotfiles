@@ -45,11 +45,11 @@ return {
                 map('K', function() return vim.lsp.buf.hover() end, 'Hover')
                 map('<C-k>', function() return vim.lsp.buf.signature_help() end, 'signature help', 'i')
 
-                map('gs', function() require('fzf-lua').lsp_document_symbols() end, 'Fuzzy find symbols in document')
+                map('gS', function() require('fzf-lua').lsp_document_symbols() end, 'Fuzzy find symbols in document')
 
                 -- Fuzzy find all the symbols in your current workspace.
                 --  Similar to document symbols, except searches over your entire project.
-                map('gS', function() require('fzf-lua').lsp_dynamic_workspace_symbols() end, 'Open Workspace Symbols')
+                -- map('gS', function() require('fzf-lua').lsp_dynamic_workspace_symbols() end, 'Open Workspace Symbols')
 
                 -- Jump to the type of the word under your cursor.
                 --  Useful when you're not sure what type a variable is and you want to see
