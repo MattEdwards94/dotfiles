@@ -99,8 +99,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # source environment variables, e.g. ai api keys
-if [ -f .envrc ]; then
-    source .envrc
+if [ -f $HOME/.envrc ]; then
+    source $HOME/.envrc
 fi
 
 tmux_sess() {
@@ -110,3 +110,7 @@ bind -x '"\C-f": tmux_sess'
 
 alias ll='ls -latr'
 
+eval `ssh-agent`
+if [ -f $HOME/.ssh-agent-keys ]; then
+    source $HOME/.ssh-agent-keys
+fi
