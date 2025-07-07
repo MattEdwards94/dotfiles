@@ -9,7 +9,13 @@ return {
         require('codecompanion').setup {
             strategies = {
                 chat = {
-                    adapter = 'gemini',
+                    adapter = 'copilot',
+                },
+                inline = {
+                    adapter = 'copilot',
+                },
+                agent = {
+                    adapter = 'copilot',
                 },
                 keymaps = {
                     send = {
