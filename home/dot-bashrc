@@ -108,4 +108,5 @@ tmux_sess() {
 }
 bind -x '"\C-f": tmux_sess'
 
+alias ll='ls -latr'
 
