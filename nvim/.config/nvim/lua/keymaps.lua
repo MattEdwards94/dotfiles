@@ -149,6 +149,7 @@ Snacks.toggle.line_number():map('<leader>ul')
 Snacks.toggle.animate():map('<leader>ua')
 Snacks.toggle.indent():map('<leader>ug')
 Snacks.toggle.scroll():map('<leader>uS')
+Snacks.toggle.zoom():map('<leader>wm')
 
 if vim.lsp.inlay_hint then
   Snacks.toggle.inlay_hints():map('<leader>uh')
