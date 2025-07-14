@@ -18,11 +18,18 @@ opt.fillchars = { -- characters to fill the statusline, vertical separators and 
   diff = '╱',
   eob = ' ',
 }
+
 opt.foldlevel = 99 -- Effectively disables folding sections by default
-opt.foldmethod = 'expr' -- use expresion for folding, see below
+opt.foldcolumn = '0'
 opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()' -- use treesitter to define fold points
---opt.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
---opt.formatoptions = "jcroqlnt" -- tcqj
+opt.foldmethod = 'expr' -- use expresion for folding, see below
+opt.foldnestmax = 1
+function _G.MyFoldText()
+  return vim.fn.getline(vim.v.foldstart)
+end
+vim.opt.foldtext = 'v:lua.MyFoldText()'
+
+opt.formatoptions = "jcroqlnt" -- tcqj
 opt.grepformat = '%f:%l:%c:%m' -- allows parsing the grep command output
 opt.grepprg = 'rg --vimgrep' -- Use ripgrep for grepping
 opt.ignorecase = true -- Ignore case, see also smartcase

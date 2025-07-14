@@ -104,11 +104,13 @@ if [ -f $HOME/.envrc ]; then
 fi
 
 tmux_sess() {
-    /home/edwardsm/tmux-sessionizer/tmux-sessionizer
+    # /home/edwardsm/tmux-sessionizer/tmux-sessionizer
+    /home/edwardsm/.local/bin/tmux-sessionizer
 }
 bind -x '"\C-f": tmux_sess'
 
 alias ll='ls -latr'
+alias nv='nvim'
 
 eval `ssh-agent`
 if [ -f $HOME/.ssh-agent-keys ]; then
