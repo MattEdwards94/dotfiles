@@ -18,6 +18,7 @@ return {
                 find = 'gsf',
                 highlight = 'gsh',
                 replace = 'gsr',
+                update_n_lines = 'gsn',
             },
         })
 
