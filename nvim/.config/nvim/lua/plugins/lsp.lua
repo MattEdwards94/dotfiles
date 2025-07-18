@@ -165,6 +165,11 @@ return {
                 },
             },
             gopls = {},
+            -- Bash language server
+            bashls = {
+                cmd = { 'bash-language-server', 'start' },
+                filetypes = { 'sh', 'zsh' },
+            },
             pyright = {},
             lua_ls = {
                 -- cmd = { ... },
