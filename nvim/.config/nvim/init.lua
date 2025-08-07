@@ -10,6 +10,8 @@ vim.g.ai_cmp = true
 
 vim.opt.rtp:prepend(vim.fn.stdpath 'data' .. '/lua')
 
+vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#898989', bg = '#898989' })
+
 require 'options'
 
 -- ========================= [[ Basic Autocommands ]] ========================= --
