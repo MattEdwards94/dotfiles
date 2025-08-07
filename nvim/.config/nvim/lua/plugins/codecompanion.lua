@@ -1,12 +1,34 @@
 return {
     'olimorris/codecompanion.nvim',
-    opts = {},
+    opts = {
+        extensions = {
+            vectorcode = {
+                opts = {
+                    add_tool = true,
+                }
+            }
+        }
+    },
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-treesitter/nvim-treesitter',
+        {
+            "Davidyz/VectorCode",
+            version = "*",
+            cmd = {
+                "VectorCode",
+            },
+        }
     },
     config = function()
         require('codecompanion').setup {
+            extensions = {
+                vectorcode = {
+                    opts = {
+                        add_tool = true,
+                    }
+                }
+            },
             strategies = {
                 chat = {
                     adapter = 'copilot',
