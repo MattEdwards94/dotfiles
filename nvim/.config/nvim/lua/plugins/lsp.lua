@@ -39,7 +39,7 @@ return {
                 map('gd', vim.lsp.buf.definition, 'Goto definition')
                 map('gD', vim.lsp.buf.declaration, 'Goto declaration')
                 map('gi', vim.lsp.buf.implementation, 'Goto implementation')
-                map('gr', vim.lsp.buf.references, 'list references')
+                map('gr', '<cmd>FzfLua lsp_references<CR>', 'List references')
 
                 -- show tooltip and/or signature_help
                 map('K', function() return vim.lsp.buf.hover() end, 'Hover')
