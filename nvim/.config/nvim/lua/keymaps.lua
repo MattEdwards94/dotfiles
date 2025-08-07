@@ -20,8 +20,101 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true })
 
 -- LSP Hierarchy
-vim.keymap.set('n', 'ghh', vim.lsp.buf.incoming_calls, { desc = 'Hierarchy in' })
 vim.keymap.set('n', 'gho', vim.lsp.buf.outgoing_calls, { desc = 'Hierarchy out' })
+vim.keymap.set("n", "ghh", function()
+  require("snacks").picker.pick {
+    title = "LSP Incoming Calls",
+    finder = function(opts, ctx)
+      local lsp = require "snacks.picker.source.lsp"
+      local Async = require "snacks.picker.util.async"
+      local win = ctx.filter.current_win
+      local buf = ctx.filter.current_buf
+      local bufmap = lsp.bufmap()
+
+      ---@async
+      ---@param cb async fun(item: snacks.picker.finder.Item)
+      return function(cb)
+        local async = Async.running()
+        local cancel = {} ---@type fun()[]
+
+        async:on(
+          "abort",
+          vim.schedule_wrap(function()
+            vim.tbl_map(pcall, cancel)
+            cancel = {}
+          end)
+        )
+
+        vim.schedule(function()
+          -- First prepare the call hierarchy
+          local clients = lsp.get_clients(buf, "textDocument/prepareCallHierarchy")
+          if vim.tbl_isempty(clients) then return async:resume() end
+
+          local remaining = #clients
+          for _, client in ipairs(clients) do
+            local params = vim.lsp.util.make_position_params(win, client.offset_encoding)
+            local status, request_id = client:request("textDocument/prepareCallHierarchy", params, function(_, result)
+              if result and not vim.tbl_isempty(result) then
+                -- Then get incoming calls for each item
+                local call_remaining = #result
+                if call_remaining == 0 then
+                  remaining = remaining - 1
+                  if remaining == 0 then async:resume() end
+                  return
+                end
+
+                for _, item in ipairs(result) do
+                  local call_params = { item = item }
+                  local call_status, call_request_id = client:request(
+                    "callHierarchy/incomingCalls",
+                    call_params,
+                    function(_, calls)
+                      if calls then
+                        for _, call in ipairs(calls) do
+                          ---@type snacks.picker.finder.Item
+                          local item = {
+                            text = call.from.name .. "    " .. call.from.detail,
+                            kind = lsp.symbol_kind(call.from.kind),
+                            line = "    " .. call.from.detail,
+                          }
+                          local loc = {
+                            uri = call.from.uri,
+                            range = call.from.range,
+                          }
+                          lsp.add_loc(item, loc, client)
+                          item.buf = bufmap[item.file]
+                          item.text = item.file .. "    " .. call.from.detail
+                          ---@diagnostic disable-next-line: await-in-sync
+                          cb(item)
+                        end
+                      end
+                      call_remaining = call_remaining - 1
+                      if call_remaining == 0 then
+                        remaining = remaining - 1
+                        if remaining == 0 then async:resume() end
+                      end
+                    end
+                  )
+                  if call_status and call_request_id then
+                    table.insert(cancel, function() client:cancel_request(call_request_id) end)
+                  end
+                end
+              else
+                remaining = remaining - 1
+                if remaining == 0 then async:resume() end
+              end
+            end)
+            if status and request_id then table.insert(cancel, function() client:cancel_request(request_id) end) end
+          end
+        end)
+
+        async:suspend()
+        cancel = {}
+        async = Async.nop()
+      end
+    end,
+  }
+end, { desc = "LSP incoming function calls" })
 
 -- allows paste without the delete overwriting the register
 vim.keymap.set('x', '<leader>p', [["_dP]])
@@ -128,6 +221,11 @@ vim.keymap.set('n', '<leader>wd', '<C-W>c', { desc = 'Delete Window', remap = tr
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('t', '<c-n>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+-- vim.api.nvim_set_keymap('t', '<C-h>', '<C-\\><C-n><C-w>h', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('t', '<C-j>', '<C-\\><C-n><C-w>j', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('t', '<C-k>', '<C-\\><C-n><C-w>k', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('t', '<C-l>', '<C-\\><C-n><C-w>l', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('t', '<C-w>', '<C-\\><C-n><C-w>', {noremap = true, silent = true})
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -163,3 +261,11 @@ vim.keymap.set("n", "<M-h>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
 vim.keymap.set("n", "<M-t>", "<cmd>silent !tmux neww tmux-sessionizer -s 1<CR>")
 vim.keymap.set("n", "<M-n>", "<cmd>silent !tmux neww tmux-sessionizer -s 2<CR>")
 vim.keymap.set("n", "<M-s>", "<cmd>silent !tmux neww tmux-sessionizer -s 3<CR>")
+
+
+
+vim.keymap.set("i", "<M-c>", function()
+  local nldocs = require("noice.lsp.docs")
+  local message = nldocs.get("signature")
+  nldocs.hide(message)
+end)
