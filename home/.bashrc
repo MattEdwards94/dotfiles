@@ -114,6 +114,7 @@ bind -x '"\C-f": tmux_sess'
 
 alias ll='ls -latr'
 alias nv='nvim'
+alias svenv='source venv/bin/activate'
 
 eval `ssh-agent`
 if [ -f $HOME/.ssh-agent-keys ]; then
