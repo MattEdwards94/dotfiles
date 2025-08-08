@@ -88,6 +88,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
+
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/home/edwardsm/.local/bin/"
 export PATH="$PATH:/home/edwardsm/tmux-sessionizer"
