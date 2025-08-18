@@ -12,6 +12,9 @@ return {
                 enable = true,
             },
             indent = { enable = true },
+            folds = {
+                enable = true,
+            },
             incremental_selection = {
                 enable = true,
                 keymaps = {
