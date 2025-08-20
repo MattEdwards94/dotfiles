@@ -6,8 +6,6 @@ vim.g.have_nerd_font = true
 
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 
-vim.g.ai_cmp = true
-
 vim.opt.rtp:prepend(vim.fn.stdpath 'data' .. '/lua')
 
 vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#898989', bg = '#898989' })
