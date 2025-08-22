@@ -1,0 +1,1 @@
+bind \cl forward-char
