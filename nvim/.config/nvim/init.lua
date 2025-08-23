@@ -85,5 +85,8 @@ require('lazy').setup({
 
 require 'keymaps'
 
+-- link the winbar inactive style to the active style
+vim.cmd("hi! link WinBarNC WinBar")
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

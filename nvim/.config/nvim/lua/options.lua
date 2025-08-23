@@ -31,6 +31,7 @@ opt.ignorecase = true -- Ignore case, see also smartcase
 opt.inccommand = 'nosplit' -- preview incremental substitute
 opt.jumpoptions = 'view' -- Try to preserve the screen position when jumping through lists (e.g. using C-o)
 opt.laststatus = 3 -- Always have a single statusline
+opt.winbar = '%= %f'
 opt.linebreak = true -- Wrap lines at convenient points
 opt.list = true -- Show some invisible characters (tabs...
 opt.mouse = 'a' -- Enable mouse mode
