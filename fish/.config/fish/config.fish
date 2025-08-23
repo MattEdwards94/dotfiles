@@ -18,7 +18,7 @@ bind \cf tmux_sess
 # Aliases
 alias ll='ls -latr'
 alias nv='nvim'
-alias svenv='source venv/bin/activate'
+alias svenv='source venv/bin/activate.fish'
 alias gs='git status'
 alias gd='git diff'
 alias glo='git log --oneline -n'
@@ -29,4 +29,8 @@ if test -f $HOME/.ssh-agent-keys
     source $HOME/.ssh-agent-keys
 end
 
+
+if test -f "/home/edwardsm/corporate-ca.pem"
+    set -x NODE_EXTRA_CA_CERTS "/home/edwardsm/corporate-ca.pem"
+end
 
