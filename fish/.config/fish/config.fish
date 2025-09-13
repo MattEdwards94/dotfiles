@@ -1,4 +1,3 @@
-
 set -Ua PATH /opt/nvim-linux-x86_64/bin
 set -Ua PATH $HOME/.local/bin
 set -Ua PATH $HOME/tmux-sessionizer
@@ -33,4 +32,3 @@ end
 if test -f "/home/edwardsm/corporate-ca.pem"
     set -x NODE_EXTRA_CA_CERTS "/home/edwardsm/corporate-ca.pem"
 end
-
