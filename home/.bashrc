@@ -123,3 +123,7 @@ eval `ssh-agent`
 if [ -f $HOME/.ssh-agent-keys ]; then
     source $HOME/.ssh-agent-keys
 fi
+
+if [ -f "/home/edwardsm/corporate-ca.pem" ]; then
+    export NODE_EXTRA_CA_CERTS="/home/edwardsm/corporate-ca.pem"
+fi
