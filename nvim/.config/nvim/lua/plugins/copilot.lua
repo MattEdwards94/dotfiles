@@ -12,6 +12,11 @@ return {
                 prev = "<M-[>",
             },
         },
+        panel = {
+            keymap = {
+                open = false,
+            },
+        },
         filetypes = {
             markdown = true,
             help = true,
