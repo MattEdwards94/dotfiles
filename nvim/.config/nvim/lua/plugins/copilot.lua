@@ -12,11 +12,7 @@ return {
                 prev = "<M-[>",
             },
         },
-        panel = {
-            keymap = {
-                open = false,
-            },
-        },
+        panel = { enabled = false },
         filetypes = {
             markdown = true,
             help = true,
