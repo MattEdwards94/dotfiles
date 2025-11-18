@@ -16,6 +16,7 @@ packages_to_install=(
     "neovim"
     "ripgrep"
     "tmux"
+    "tree"
     "unzip"
     "wget"
     "zsh"
@@ -28,15 +29,38 @@ add_repos_commands=(
 )
 
 extra_install_commands=(
-    "curl -LsSf https://astral.sh/uv/install.sh | sh"
     "uv tool install \"vectorcode<1.0.0\""
 )
 
+install_bazelisk() {
+    # install bazelisk if it is not already installed
+    if command -v bazel &> /dev/null; then
+        echo "bazelisk is already installed"
+        return
+    fi
+    sudo curl -L https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64 -o /usr/local/bin/bazel
+    sudo chmod +x /usr/local/bin/bazel
+}
+
 install_nvm() {
+    # install nvm if it is not already installed
+    if command -v nvm &> /dev/null; then
+        echo "nvm is already installed"
+        return
+    fi
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     nvm install --lts
+}
+
+install_uv() {
+    # install uv if it ist not already installed
+    if command -v uv &> /dev/null; then
+        echo "uv is already installed"
+        return
+    fi
+    curl -LsSf https://astral.sh/uv/install.sh | sh
 }
 
 # Function to detect the system's package manager.
