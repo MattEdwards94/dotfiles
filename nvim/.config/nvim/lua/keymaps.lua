@@ -135,6 +135,9 @@ vim.keymap.set('n', 'Q', '<nop>')
 -- Open a new tmux session in the selected folder - requires tmux-sessionizer bash script
 vim.keymap.set('n', '<leader>fs', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 
+-- obsidian
+vim.keymap.set('n', '<leader>oh', '<cmd>edit ~/notes/Home/Home.md<CR>', { desc = '[obsidian] Open Home' })
+
 -- neorg
 vim.keymap.set({ 'n' }, '<leader>ni', '<cmd>Neorg index<CR>', { desc = '[neorg] Open index' })
 vim.keymap.set('n', '<leader>nt', '<cmd>edit /home/edwardsm/notes/todo.norg<CR>', { desc = '[neorg] Open todo' })
