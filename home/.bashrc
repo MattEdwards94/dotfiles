@@ -128,5 +128,9 @@ if [ -f "/home/edwardsm/corporate-ca.pem" ]; then
     export NODE_EXTRA_CA_CERTS="/home/edwardsm/corporate-ca.pem"
 fi
 
+if [ -f "/home/edwardsm/dotfiles/home/work_functions.sh" ]; then
+    source /home/edwardsm/dotfiles/home/work_functions.sh
+fi
+
 # opencode
 export PATH=/home/edwardsm/.opencode/bin:$PATH
