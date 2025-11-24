@@ -90,6 +90,7 @@ return {
         vim.keymap.set('n', '<leader>fc', function() fzf.files({ cwd = vim.fn.stdpath("config")}) end, { desc = 'Config files' })
         vim.keymap.set('n', '<leader>fd', function() fzf.files({ cwd = "~/dotfiles/"}) end, { desc = 'Search file in dotfiles' })
         vim.keymap.set('n', '<leader>fn', function() require('fzf-lua').files({ cwd = vim.fn.expand('~/notes') }) end, { desc = 'Find files in notes' })
+        vim.keymap.set('n', '<leader>fo', function() require('fzf-lua').files({ cwd = vim.fn.expand('/mnt/c/Users/edwardsm/obsidian/Home') }) end, { desc = 'Find files in notes' })
         vim.keymap.set('n', '<leader>fA', function() require('fzf-lua').files({ cwd = vim.fn.expand('~') }) end, { desc = 'Find files under ~' })
 
         -- keymaps for searching within something
