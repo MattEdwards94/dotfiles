@@ -30,6 +30,7 @@ add_repos_commands=(
 
 extra_install_commands=(
     "uv tool install \"vectorcode<1.0.0\""
+    "curl -fsSL https://opencode.ai/install | bash"
 )
 
 install_bazelisk() {

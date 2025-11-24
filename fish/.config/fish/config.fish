@@ -1,6 +1,7 @@
 set -Ua PATH /opt/nvim-linux-x86_64/bin
 set -Ua PATH $HOME/.local/bin
 set -Ua PATH $HOME/tmux-sessionizer
+set -Ua PATH $HOME/.opencode/bin
 
 if test -f $HOME/.envrc
     source $HOME/.envrc

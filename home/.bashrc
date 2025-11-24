@@ -127,3 +127,6 @@ fi
 if [ -f "/home/edwardsm/corporate-ca.pem" ]; then
     export NODE_EXTRA_CA_CERTS="/home/edwardsm/corporate-ca.pem"
 fi
+
+# opencode
+export PATH=/home/edwardsm/.opencode/bin:$PATH
