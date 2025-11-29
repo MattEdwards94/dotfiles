@@ -25,11 +25,13 @@ packages_to_install=(
 
 add_repos_commands=(
     # Add your repository commands here.
-    "sudo add-apt-repository -y ppa:neovim-ppa/unstable"
 )
 
 extra_install_commands=(
-    "uv tool install \"vectorcode<1.0.0\""
+    install_uv
+    install_neovim
+    install_nvm
+    install_copilot
 )
 
 install_bazelisk() {
@@ -61,6 +63,24 @@ install_uv() {
         return
     fi
     curl -LsSf https://astral.sh/uv/install.sh | sh
+}
+
+install_neovim() {
+    if command -v nvim &> /dev/null; then
+        echo "neovim is already installed"
+        return
+    fi
+    curl -LO https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.appimage
+    chmod u+x nvim-linux-x86_64.appimage
+    sudo mv nvim-linux-x86_64.appimage /usr/local/bin/nvim
+}
+
+install_copilot() {
+    if command -v copilot &> /dev/null; then
+        echo "copilot is already installed"
+        return
+    fi
+    npm install -g @github/copilot
 }
 
 # Function to detect the system's package manager.
