@@ -12,22 +12,10 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-treesitter/nvim-treesitter',
-        {
-            "Davidyz/VectorCode",
-            version = "*",
-            cmd = {
-                "VectorCode",
-            },
-        }
     },
     config = function()
         require('codecompanion').setup {
             extensions = {
-                vectorcode = {
-                    opts = {
-                        add_tool = true,
-                    }
-                }
             },
             strategies = {
                 chat = {
