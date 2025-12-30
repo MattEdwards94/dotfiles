@@ -10,13 +10,22 @@ return {
             },
             strategies = {
                 chat = {
-                    adapter = 'copilot',
+                    adapter = {
+                        name = 'copilot',
+                        model = 'gemini-3-pro-preview',
+                    },
                 },
                 inline = {
-                    adapter = 'copilot',
+                    adapter = {
+                        name = 'copilot',
+                        model = 'gemini-3-pro-preview',
+                    },
                 },
                 agent = {
-                    adapter = 'copilot',
+                    adapter = {
+                        name = 'copilot',
+                        model = 'gemini-3-pro-preview',
+                    },
                 },
                 keymaps = {
                     send = {

@@ -154,6 +154,7 @@ vim.keymap.set('n', 'fp', 'gg=G<C-o>', { desc = 'Format page and go back to prev
 
 -- CodeCompanion shortcuts
 vim.keymap.set({ 'n', 'v' }, '<leader>at', '<cmd>CodeCompanionChat Toggle<CR><cmd>set winwidth=70<CR>', { desc = '[CodeCompanion] Toggle chat' })
+vim.keymap.set({ 'n', 'v' }, '<leader>an', '<cmd>CodeCompanionChat<CR><cmd>set winwidth=70<CR>', { desc = '[CodeCompanion] New chat' })
 vim.keymap.set({ 'n', 'v' }, '<leader>ae', '<cmd>CodeCompanion /explain<CR>', { desc = '[CodeCompanion] Explain selected code' })
 vim.keymap.set({ 'n', 'v' }, '<leader>aa', '<cmd>CodeCompanionActions<CR>', { desc = '[CodeCompanion] Show actions' })
 vim.keymap.set('v', '<leader>aca', '<cmd>CodeCompanionChat Add<CR>', { desc = '[CodeCompanion] Add to chat' })

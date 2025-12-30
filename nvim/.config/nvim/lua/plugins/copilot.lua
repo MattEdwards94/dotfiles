@@ -1,3 +1,5 @@
+-- Note that this plugin relies on the gh cli tool being installed for authenticationt.
+-- See installation instructions at: https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian
 return {
     "zbirenbaum/copilot.lua",
     dependencies = { "giuxtaposition/blink-cmp-copilot" },
