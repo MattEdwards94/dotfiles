@@ -2,6 +2,7 @@ return {
     'lewis6991/gitsigns.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
     opts = {
+        current_line_blame = true,
         signs = {
             add = { text = '▎' },
             change = { text = '▎' },
@@ -54,9 +55,8 @@ return {
             map("n", "<leader>gR", gs.reset_buffer, "Reset Buffer")
             map("n", "<leader>gp", gs.preview_hunk_inline, "Preview Hunk Inline")
             map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame Line")
+            map("n", "<leader>ub", gs.toggle_current_line_blame, "Toggle Git Blame")
             map("n", "<leader>gB", function() gs.blame() end, "Blame Buffer")
-            map("n", "<leader>gd", function() gs.diffthis("HEAD") end, "Diff This")
-            map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff This ~")
             map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
         end,
     },
