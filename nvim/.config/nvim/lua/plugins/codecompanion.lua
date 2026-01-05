@@ -1,47 +1,73 @@
 return {
     'olimorris/codecompanion.nvim',
-    opts = {
-        extensions = {
-            vectorcode = {
-                opts = {
-                    add_tool = true,
-                }
-            }
-        }
-    },
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-treesitter/nvim-treesitter',
-        {
-            "Davidyz/VectorCode",
-            version = "*",
-            cmd = {
-                "VectorCode",
-            },
-        }
     },
     config = function()
         require('codecompanion').setup {
             extensions = {
-                vectorcode = {
-                    opts = {
-                        add_tool = true,
-                    }
-                }
             },
-            strategies = {
+            rules = {
+                default = {
+                    description = "Collection of common files for all projects",
+                    files = {
+                        ".clinerules",
+                        ".cursorrules",
+                        ".goosehints",
+                        ".rules",
+                        ".windsurfrules",
+                        ".github/copilot-instructions.md",
+                        "AGENT.md",
+                        "AGENTS.md",
+                        { path = "CLAUDE.md", parser = "claude" },
+                        { path = "CLAUDE.local.md", parser = "claude" },
+                        { path = "~/.claude/CLAUDE.md", parser = "claude" },
+                    },
+                    is_preset = true,
+                },
+                opts = {
+                    chat = {
+                        enabled = true,
+                        default_rules = "default", -- The rule groups to load
+                    },
+                },
+            },
+            interactions = {
                 chat = {
-                    adapter = 'copilot',
+                    tools = {
+                        ["cmd_runner"] = {
+                            opts = {
+                                allowed_in_yolo_mode = true,
+                            },
+                        },
+                        opts = {
+                            default_tools = {
+                                "full_stack_dev",
+                                "files"
+                            },
+                        },
+                    },
+                    adapter = {
+                        name = 'copilot',
+                        model = 'gemini-3-pro-preview',
+                    },
                 },
                 inline = {
-                    adapter = 'copilot',
+                    adapter = {
+                        name = 'copilot',
+                        model = 'gemini-3-pro-preview',
+                    },
                 },
                 agent = {
-                    adapter = 'copilot',
+                    adapter = {
+                        name = 'copilot',
+                        model = 'gemini-3-pro-preview',
+                    },
                 },
                 keymaps = {
                     send = {
-                        modes = { n = '<C-s>', i = { '<C-s>', '<C-CR>' } },
+                        modes = { n = { '<C-s>', '<C-l>' }, i = { '<C-s>', '<C-l>', '<C-Enter>' } },
                     },
                     close = {
                         modes = { n = '<C-c>', i = '<C-c>' },
