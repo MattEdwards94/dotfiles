@@ -74,6 +74,11 @@ return {
                     },
                 },
             },
+            display = {
+                chat = {
+                    show_reasoning = false,
+                },
+            },
             adapters = {
                 gemini = function()
                     return require('codecompanion.adapters').extend('gemini', {
