@@ -34,3 +34,8 @@ end
 if test -f "/home/edwardsm/corporate-ca.pem"
     set -x NODE_EXTRA_CA_CERTS "/home/edwardsm/corporate-ca.pem"
 end
+
+if test -f $HOME/.config/fish/work_functions.fish
+    source $HOME/.config/fish/work_functions.fish
+end
+
