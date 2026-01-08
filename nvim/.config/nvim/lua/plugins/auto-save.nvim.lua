@@ -14,7 +14,6 @@ return {
                     "Octo",        -- Main Octo buffers
                     "gitcommit",   -- Common exclusion for Git commit messages
                     "gitrebase",   -- Common exclusion for Git rebase messages
-                    -- (though Octo handles saving explicitly on :w)
                 }
 
                 for _, ft in ipairs(excluded_filetypes) do
