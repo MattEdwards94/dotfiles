@@ -138,7 +138,6 @@ vim.keymap.set('n', '<leader>fs', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 -- obsidian
 vim.keymap.set('n', '<leader>oh', '<cmd>edit ~/notes/Home/Home.md<CR>', { desc = '[obsidian] Open Home' })
 
-
 -- Format whole page
 vim.keymap.set('n', 'fp', 'gg=G<C-o>', { desc = 'Format page and go back to prev location' })
 
