@@ -14,7 +14,6 @@ return {
                     "Octo",        -- Main Octo buffers
                     "gitcommit",   -- Common exclusion for Git commit messages
                     "gitrebase",   -- Common exclusion for Git rebase messages
-                    "markdown",    -- If Octo comments are markdown and you don't want to autosave them
                     -- (though Octo handles saving explicitly on :w)
                 }
 
