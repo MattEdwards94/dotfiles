@@ -8,10 +8,9 @@ configuration) with supporting Bash and Fish shell scripts.
 
 ## Code Style Guidelines
 
-### General Formatting
+### Markdown Formatting
 
-- **Line wrapping**: Wrap at approximately 80-90 characters with a hard
-  limit of 100 characters
+- **Line wrapping**: Wrap at approximately 80-90 characters with a hard limit of 100 characters
 - **Line endings**: Unix line endings (LF)
 
 ### Lua (Neovim Configuration)
@@ -95,3 +94,14 @@ codebase:
 
 This ensures configuration changes stay synchronized with user
 documentation and workflows.
+
+## Internal Documentation
+
+There is a `docs/` folder in this repository for storing personal reference documentation
+(not installed by Stow).
+
+- **Check for Impacts**: When making changes to configurations (keymaps, workflows, etc.),
+    ALWAYS check if the `docs/` folder contains relevant documentation.
+- **Update Docs**: If a change invalidates or modifies something described in `docs/`, you
+    MUST update the corresponding documentation file.
+
