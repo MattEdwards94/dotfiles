@@ -263,8 +263,7 @@ end)
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
-vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) 
+vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith)
 
 -- Open git diff view
 vim.keymap.set('n' , '<leader>gd', '<cmd>DiffviewOpen<CR>', { desc = 'Git Diffview Open' })
-
