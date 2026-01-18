@@ -15,7 +15,6 @@ return {
         { '<leader>g', group = 'git' },
 
         { '<leader>c', group = 'code' },
-        { '<leader>n', group = 'notes/neorg' },
 
         { '<leader>q', group = 'quit/session' },
         { '<leader>u', group = 'ui', icon = { icon = '󰙵 ', color = 'cyan' } },

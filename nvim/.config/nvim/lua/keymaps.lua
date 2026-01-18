@@ -138,19 +138,6 @@ vim.keymap.set('n', '<leader>fs', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 -- obsidian
 vim.keymap.set('n', '<leader>oh', '<cmd>edit ~/notes/Home/Home.md<CR>', { desc = '[obsidian] Open Home' })
 
--- neorg
-vim.keymap.set({ 'n' }, '<leader>ni', '<cmd>Neorg index<CR>', { desc = '[neorg] Open index' })
-vim.keymap.set('n', '<leader>nt', '<cmd>edit /home/edwardsm/notes/todo.norg<CR>', { desc = '[neorg] Open todo' })
-vim.keymap.set('n', '<leader>nf', '<cmd>FzfLua files cwd=/home/edwardsm/notes/ sort_mru=true sort_lastused=true<cr>', { desc = 'Notes files' })
---vim.keymap.set('n', '<leader>ns', LazyVim.pick('live_grep', { cwd = '/home/edwardsm/notes/' }), { desc = 'Search in notes' })
-
-vim.keymap.set('n', '<leader>no', '<cmd>Neorg toc<CR>', { desc = '[neorg] Open toc' })
-vim.keymap.set('n', '<leader>ncb', 'i@code<CR>@end<Esc>kA', { desc = '[neorg] New code block' })
-vim.keymap.set('n', '<leader>ncp', 'i@code bash<CR>@end<Esc>ko<Esc>p', { desc = '[neorg] Paste as code block' })
-
-vim.keymap.set('n', '<leader>nn', 'i- ( ) ', { desc = '[neorg] New todo item' })
-vim.keymap.set('n', '<leader>nd', '<Plug>(neorg.qol.todo-items.todo.task-done)', { desc = '[neorg] Mark todo done' })
-vim.keymap.set('n', '<leader>nu', '<Plug>(neorg.qol.todo-items.todo.task-undone)', { desc = '[neorg] Mark todo undone' })
 
 -- Format whole page
 vim.keymap.set('n', 'fp', 'gg=G<C-o>', { desc = 'Format page and go back to prev location' })
