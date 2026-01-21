@@ -6,8 +6,12 @@ return {
         -- This function runs after fzf-lua is loaded
         local fzf = require 'fzf-lua'
 
-
         fzf.setup {
+            -- Custom highlights for path/filename separation
+            hls = {
+                dir_part = 'Comment',        -- Use Comment highlight for directory path (grayed out)
+                file_part = 'Normal',        -- Keep filename in normal color
+            },
             -- Default options for various commands
             defaults = {
                 border = 'rounded',
@@ -41,6 +45,7 @@ return {
                 prompt = '󰈔 Files > ',
                 cwd_prompt = true,
                 fd_opts = "--color=never --type f --hidden --follow --exclude .git",
+                formatter = 'path.filename_first',
             },
             grep = {
                 prompt = '󰈸 Grep > ',
