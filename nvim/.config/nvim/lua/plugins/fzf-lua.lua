@@ -50,10 +50,12 @@ return {
             grep = {
                 prompt = '󰈸 Grep > ',
                 rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --follow -e",
+                formatter = 'path.filename_first',
             },
             live_grep = {
                 prompt = '󰈸 Live Grep > ',
                 rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --follow -e",
+                formatter = 'path.filename_first',
             },
             buffers = {
                 prompt = '󰋋 Buffers > ',
