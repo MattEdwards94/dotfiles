@@ -95,6 +95,7 @@ fi
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/home/edwardsm/.local/bin/"
 export PATH="$PATH:/home/edwardsm/tmux-sessionizer"
+export PATH="$PATH:/usr/local/go/bin"
 source "$HOME/.cargo/env"
 
 
@@ -115,9 +116,12 @@ bind -x '"\C-f": tmux_sess'
 alias ll='ls -latr'
 alias nv='nvim'
 alias svenv='source venv/bin/activate'
+
 alias gs='git status'
 alias gd='git diff'
 alias glo='git log --oneline -n'
+
+alias ktl='kubectl'
 
 eval `ssh-agent`
 if [ -f $HOME/.ssh-agent-keys ]; then
