@@ -49,16 +49,17 @@ return {
             },
             grep = {
                 prompt = '󰈸 Grep > ',
-                rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --follow -e",
+                rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --follow -e 2> /dev/null",
                 formatter = 'path.filename_first',
             },
             live_grep = {
                 prompt = '󰈸 Live Grep > ',
-                rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --follow -e",
+                rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --follow -e 2> /dev/null",
                 formatter = 'path.filename_first',
             },
             buffers = {
                 prompt = '󰋋 Buffers > ',
+                formatter = 'path.filename_first',
             },
             oldfiles = {
                 prompt = '󱂬 History > ',
