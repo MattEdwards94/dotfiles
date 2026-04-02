@@ -23,6 +23,7 @@ alias svenv='source venv/bin/activate.fish'
 alias gs='git status'
 alias gd='git diff'
 alias glo='git log --oneline -n'
+alias caat='copilot --allow-all-tools'
 
 # SSH agent
 eval (ssh-agent -c)

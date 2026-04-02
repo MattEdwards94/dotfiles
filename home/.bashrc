@@ -120,6 +120,7 @@ alias svenv='source venv/bin/activate'
 alias gs='git status'
 alias gd='git diff'
 alias glo='git log --oneline -n'
+alias caat='copilot --allow-all-tools'
 
 alias ktl='kubectl'
 
