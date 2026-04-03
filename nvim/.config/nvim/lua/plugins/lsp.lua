@@ -169,6 +169,10 @@ return {
             bashls = {
                 cmd = { 'bash-language-server', 'start' },
                 filetypes = { 'sh', 'zsh' },
+                root_dir = function(fname)
+                    local util = require 'lspconfig.util'
+                    return util.root_pattern '.git'(fname) or util.path.dirname(fname)
+                end,
             },
             pyright = {},
             lua_ls = {
