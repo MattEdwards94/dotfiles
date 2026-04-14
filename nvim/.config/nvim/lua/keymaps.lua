@@ -135,9 +135,12 @@ vim.keymap.set('n', 'Q', '<nop>')
 -- Open a new tmux session in the selected folder - requires tmux-sessionizer bash script
 vim.keymap.set('n', '<leader>fs', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 
--- obsidian
-vim.keymap.set('n', '<leader>oh', '<cmd>edit ~/notes/Home/Home.md<CR>', { desc = '[obsidian] Open Home' })
+-- obsidian/notes
+vim.keymap.set('n', '<leader>nd', '<cmd>ObsidianToday<CR>', { desc = '[obsidian] Open Daily Note' })
+vim.keymap.set('n', '<leader>nd', '<cmd>ObsidianToday<CR>', { desc = '[obsidian] Open Daily Note' })
+vim.keymap.set('n', '<leader>nh', '<cmd>edit ~/notes/Home/Home.md<CR>', { desc = '[obsidian] Open Home' })
 vim.keymap.set('i', '<C-l>', '- [ ] ')
+
 
 -- Format whole page
 vim.keymap.set('n', 'fp', 'gg=G<C-o>', { desc = 'Format page and go back to prev location' })
