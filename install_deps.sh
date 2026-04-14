@@ -13,6 +13,7 @@ packages_to_install=(
     "git"
     "grep"
     "jq"
+    "lua-check"
     "neovim"
     "ripgrep"
     "tmux"
