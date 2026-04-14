@@ -10,8 +10,15 @@ return {
     workspaces = {
       {
         name = 'personal',
-        path = '~/notes/Home/',
+        path = '/mnt/c/Users/edwardsm/obsidian/Home',
       },
+    },
+    daily_notes = {
+      folder = 'dailies',
+      date_format = '%Y-%m-%d',
+    },
+    templates = {
+        folder = 'templates',
     },
     completion = {
       nvim_cmp = true,
