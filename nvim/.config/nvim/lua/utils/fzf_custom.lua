@@ -1,5 +1,44 @@
 local M = {}
 
+---Files picker that shows recently visited files (scoped to cwd) first,
+---then falls through to all files via fd. Fuzzy search still works across everything.
+function M.files_mru()
+    local fzf = require('fzf-lua')
+    local cwd = vim.fn.getcwd()
+    local cwd_prefix = cwd .. '/'
+
+    local recent = {}
+    local seen = {}
+    for _, f in ipairs(vim.v.oldfiles) do
+        local abs = vim.fn.fnamemodify(f, ':p')
+        if vim.fn.filereadable(abs) == 1 and abs:sub(1, #cwd_prefix) == cwd_prefix then
+            local rel = abs:sub(#cwd_prefix + 1)
+            if not seen[rel] then
+                seen[rel] = true
+                table.insert(recent, rel)
+            end
+        end
+    end
+
+    local fd_cmd = 'fd --color=never --type f --hidden --follow --exclude .git'
+    local cmd
+    if #recent > 0 then
+        local quoted = table.concat(vim.tbl_map(function(p)
+            return "'" .. p:gsub("'", "'\\''") .. "'"
+        end, recent), ' ')
+        cmd = string.format("{ printf '%%s\\n' %s; %s; } | awk '!seen[$0]++'", quoted, fd_cmd)
+    else
+        cmd = fd_cmd
+    end
+
+    fzf.files({
+        cmd = cmd,
+        fzf_opts = { ['--tiebreak'] = 'index' },
+        formatter = 'path.filename_first',
+        prompt = '󰋚 Files (recent first) > ',
+    })
+end
+
 function M.live_grep_in_selected_dir()
   -- Define the base directory for the directory picker (where fd starts searching)
   -- Using vim.fn.expand('~') is more robust than "~" directly for internal Lua paths.

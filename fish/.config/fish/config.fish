@@ -8,6 +8,9 @@ if test -f $HOME/.envrc
     source $HOME/.envrc
 end
 
+set -gx FZF_ALT_C_COMMAND "fd --type d --hidden --follow --exclude .git --exclude node_modules --exclude __pycache__ --exclude venv --exclude .venv --max-depth 6 . $HOME"
+set -gx FZF_CTRL_T_COMMAND "fd --hidden --follow --exclude .git --exclude node_modules --exclude __pycache__ --exclude venv --exclude .venv --max-depth 6 . $HOME"
+
 # tmux-sessionizer function
 function tmux_sess
     $HOME/.local/bin/tmux-sessionizer
@@ -15,6 +18,9 @@ end
 
 # Bind Ctrl-f to tmux_sess (fish syntax)
 bind \cf tmux_sess
+
+# Bind Ctrl-g to fzf directory picker
+bind \cg fzf_cd
 
 # Aliases
 alias ll='ls -latr'

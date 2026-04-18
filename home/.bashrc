@@ -113,6 +113,11 @@ tmux_sess() {
 }
 bind -x '"\C-f": tmux_sess'
 
+export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git --exclude node_modules --exclude __pycache__ --exclude venv --exclude .venv --max-depth 6 . $HOME"
+export FZF_CTRL_T_COMMAND="fd --hidden --follow --exclude .git --exclude node_modules --exclude __pycache__ --exclude venv --exclude .venv --max-depth 6 . $HOME"
+source /usr/share/doc/fzf/examples/key-bindings.bash
+bind '"\C-g": "\ec"'
+
 alias ll='ls -latr'
 alias nv='nvim'
 alias svenv='source venv/bin/activate'
