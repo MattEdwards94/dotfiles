@@ -11,7 +11,7 @@ return {
         workspaces = {
             {
                 name = 'personal',
-                path = '/mnt/c/Users/edwardsm/obsidian/Home',
+                path = '/mnt/c/Users/edwardsm/obsidian/obsidian_notes/',
             },
         },
         daily_notes = {
